@@ -62,6 +62,11 @@ const props = defineProps<{
     data?: RailwayMapData
     fullscreen?: boolean
     station?: Station["id"]
+    mcX?: number
+    mcY?: number
+    X?: number
+    Y?: number
+    shareName?: string
 }>()
 
 const emit = defineEmits<{
@@ -325,7 +330,8 @@ function connectionPath(conn: LineConnectionRendered): string {
         <button class="fullscreen-toggle" type="button" @click="isFullscreen ? exitFullscreen() : enterFullscreen()">
             {{ isFullscreen ? 'フルスクリーンを終了' : 'フルスクリーン' }}
         </button>
-        <VueZoomable :style="{ width: '100%', height: isFullscreen ? '100vh' : '80vh' }" selector=".svg-container" :minZoom="0.1" :maxZoom="5" :buttonZoomStep="0.5" :wheelZoomStep="0.1">
+        <VueZoomable :style="{ width: '100%', height: isFullscreen ? '100vh' : '80vh' }" selector=".svg-container"
+            :minZoom="0.1" :maxZoom="5" :buttonZoomStep="0.5" :wheelZoomStep="0.1">
             <div class="svg-container">
                 <svg class="railway-map" :width="width + 100" :height="height + 100" :viewBox="`0 0 ${width} ${height}`"
                     role="img" aria-label="路線図キャンバス"
@@ -374,16 +380,24 @@ function connectionPath(conn: LineConnectionRendered): string {
                                 :class="{ rainbow: station.id === props.station }" :fill="dark ? '#fff' : '#000'"
                                 :transform="`rotate(-60 ${station.x}, ${station.y - 15})`">{{
                                     getStationDisplayText(station, lines) }}</text>
-
                         </g>
                         <g v-else>
                             <circle :cx="station.x" :cy="station.y" r="8" fill="white" stroke="#333" stroke-width="2"
                                 class="virtual-station" />
                             <text :x="station.x" :y="station.y" text-anchor="middle"
                                 class="station-label virtual-station" :fill="dark ? '#fff' : '#000'">{{
-                                getStationDisplayText(station, lines) }}</text>
+                                    getStationDisplayText(station, lines) }}</text>
                         </g>
                     </template>
+
+                    <g v-if="props.X && props.Y && props.shareName">
+                        <circle :cx="props.X" :cy="props.Y" r="10" fill="none" class="guide-circle" />
+                        <circle :cx="props.X" :cy="props.Y" r="8" fill="white" stroke="#333" stroke-width="2"
+                            class="highlight" />
+                        <text :x="props.X" :y="props.Y - 15" text-anchor="middle" class="station-label rainbow"
+                            :fill="dark ? '#fff' : '#000'" :transform="`rotate(-60 ${props.X}, ${props.Y - 15})`">{{
+                                props.shareName }}</text>
+                    </g>
                 </svg>
             </div>
         </VueZoomable>
@@ -454,7 +468,9 @@ svg {
         stroke-width: 0;
         opacity: 1;
     }
-
+    80% {
+        opacity: 1;
+    }
     100% {
         stroke-width: 500;
         opacity: 0;
