@@ -8,8 +8,8 @@ description: "路線図"
 import { withBase } from 'vitepress'
 </script>
 
-<BigImage src="/map/map2025-08-25.dzi" width="100%" height="75vh"/>
-<small>2025年8月25日現在</small>
+<BigImage src="/map/map2025-10-08.dzi" width="100%" height="75vh"/>
+<small>2025年10月8日現在</small>
 
-<a :href="withBase('/map/map2025-08-25.png')" download="map2025-08-25.png">ダウンロード</a>  
+<a :href="withBase('/map/map2025-10-08.png')" download="map2025-10-08.png">ダウンロード</a>  
 [自動生成マップ(試験運用)](/map/auto)
