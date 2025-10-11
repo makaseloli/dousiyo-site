@@ -8,7 +8,7 @@ line:
     number: "04"
 x: 350
 y: 350
-description: "元都市開発線の駅。放物グループが買収。"
+description: "ビル郡が存在。今後も発展が期待できる。"
 ---
 
 # {{ $frontmatter.title }} <ViewinMap />
