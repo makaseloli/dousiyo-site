@@ -3,7 +3,7 @@ layout: doc
 title: "ゆれとんび"
 letter: K
 color: "#FF6F61"
-description: "元はるかぜ。"
+description: "新の車庫へ向う路線。"
 ---
 
 # {{ $frontmatter.title }} ({{ $frontmatter.letter }})

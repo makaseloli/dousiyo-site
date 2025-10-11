@@ -2,7 +2,7 @@
 layout: home
 
 hero:
-  name: "放物HG"
+  name: "放物HD"
   tagline: いつかやる。そしてやらない。
 ---
 ![HHG](/img/company/houbutuHG/HHG.webp)
@@ -11,4 +11,3 @@ hero:
 # グループ会社一覧
 - [放物](/company/houbutuHG/houbutu)
 - [ゆれつばめ](/company/houbutuHG/yuretubame)
-- [はるかぜ鉄道](/company/houbutuHG/harukaze)
